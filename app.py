@@ -12,13 +12,16 @@ API_KEY = os.getenv("API_KEY")
 def index():
     today = datetime.now().strftime('%Y-%m-%d')
     headers = { 'x-apisports-key': API_KEY }
-    
-    # Sadece Süper Lig maçları (league ID 203)
-   url = f"https://v3.football.api-sports.io/fixtures?date={today}&league=203"
+
+    # Süper Lig bugünkü maçlar (season kaldırıldı!)
+    url = f"https://v3.football.api-sports.io/fixtures?date={today}&league=203"
     response = requests.get(url, headers=headers)
     data = response.json()
-    
+
     matches = []
+    if not data["response"]:
+        return render_template("index.html", matches=[], message="Bugün Süper Lig'de maç yok gibi görünüyor.")
+
     for match in data["response"]:
         home = match["teams"]["home"]["name"]
         away = match["teams"]["away"]["name"]
