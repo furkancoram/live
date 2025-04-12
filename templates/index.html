@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>⚽ Canlı Süper Lig Skorları</h1>
+
+    {% if message %}
+        <p style="color: gray;">{{ message }}</p>
+    {% endif %}
+
     <div class="match-container">
         {% for match in matches %}
         <div class="match-card">
