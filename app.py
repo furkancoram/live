@@ -14,7 +14,7 @@ def index():
     headers = { 'x-apisports-key': API_KEY }
     
     # Sadece Süper Lig maçları (league ID 203)
-    url = f"https://v3.football.api-sports.io/fixtures?date={today}&league=203&season=2023"
+   url = f"https://v3.football.api-sports.io/fixtures?date={today}&league=203"
     response = requests.get(url, headers=headers)
     data = response.json()
     
