@@ -13,10 +13,12 @@ def index():
     today = datetime.now().strftime('%Y-%m-%d')
     headers = { 'x-apisports-key': API_KEY }
 
-    # Süper Lig bugünkü maçlar (season kaldırıldı!)
     url = f"https://v3.football.api-sports.io/fixtures?date={today}&league=203"
     response = requests.get(url, headers=headers)
     data = response.json()
+
+    # API'den gelen veri sayısını Render loglarında görmek için:
+    print("API'den gelen maç sayısı:", len(data["response"]))
 
     matches = []
     if not data["response"]:
