@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Canlı Süper Lig Skorları</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>⚽ Canlı Süper Lig Skorları</h1>
+    <div class="match-container">
+        {% for match in matches %}
+        <div class="match-card">
+            <div class="team">
+                <img src="{{ match.logo_home }}" alt="{{ match.home }}" class="logo">
+                <span>{{ match.home }}</span>
+            </div>
+            <div class="score">{{ match.score }}</div>
+            <div class="team">
+                <img src="{{ match.logo_away }}" alt="{{ match.away }}" class="logo">
+                <span>{{ match.away }}</span>
+            </div>
+            <div class="time">{{ match.time }}' | {{ match.status }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
